@@ -93,6 +93,7 @@ namespace Mumbaidabba.Models
     {
         public int hemrajId { get; set; }
     }
+    
     public class Ishan
     {
         public int id { get; set; }
