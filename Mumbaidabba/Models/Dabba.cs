@@ -87,6 +87,8 @@ namespace Mumbaidabba.Models
     public class sam
     {
         public int samId { get; set; }
+        public string Name { get; set; }
+        public string desc { get; set; }
     }
 
 }
