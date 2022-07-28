@@ -83,22 +83,6 @@ namespace Mumbaidabba.Models
         public string dabbawalaDesc { get; set; }
     }
 
-    public class sam
-    {
-        public int samId { get; set; }
-        public string Name { get; set; }
-        public string desc { get; set; }
-    }
-    public class hemraj
-    {
-        public int hemrajId { get; set; }
-    }
-    
-    public class Ishan
-    {
-        public int id { get; set; }
-        public string name { get; set; }    
-    }
 
 }
  
