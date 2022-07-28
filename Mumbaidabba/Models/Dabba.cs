@@ -107,7 +107,6 @@ namespace Mumbaidabba.Models
         public DbSet<Carts> carts { get; set; }
         public DbSet<Contact> contact { get; set; }
         public DbSet<Dabbawala> dabbawala { get; set; }
-        
     }
 }
  
