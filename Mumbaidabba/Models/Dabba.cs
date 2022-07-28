@@ -89,6 +89,10 @@ namespace Mumbaidabba.Models
         public string Name { get; set; }
         public string desc { get; set; }
     }
+    public class hemraj
+    {
+        public int hemrajId { get; set; }
+    }
 
 }
  
