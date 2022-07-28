@@ -1,4 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Mumbaidabba.Models
 {
@@ -25,9 +28,17 @@ namespace Mumbaidabba.Models
     public class Carts
     {
         public int CartId { get; set; }
-        public int ProductId { get; set; }
+        [ForeignKey("dabbaCategory")]
+        public int DbCtgId { get; set; }
+        public DabbaCategory dabbaCategory { get; set; }
+
         public int Quantity { get; set; }
-        public int UserId { get; set; }
+        [ForeignKey("user")]
+        public int usrid { get; set; }
+        public User user { get; set; }
+
+        public float Price { get; set; }
+        public DateTime timeStamp { get; set; }
     }
     public class User
     {
@@ -36,7 +47,7 @@ namespace Mumbaidabba.Models
         public string Mobile { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }
-        public string PostalCode { get; set; }
+        public int PostalCode { get; set; }
         public string Password { get; set; }
         public bool UserType { get; set; }
         [NotMapped]
@@ -49,13 +60,14 @@ namespace Mumbaidabba.Models
     {
         public int BookingDetailsId { get; set; }
         public string BookingNo { get; set; }
-        [ForeignKey("DabbaCategory")]
+        [ForeignKey("dabbaCategory")]
         public int DbCtgId { get; set; }
-        public string DabbaCategoryName { get; set; }
+        public DabbaCategory dabbaCategory { get; set; }
         public int Quantity { get; set; }
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public int PaymentId { get; set; }
+        [ForeignKey("user")]
+        public int usrid { get; set; }
+        //public DateTime plan { get; set; }   
+        //public int PaymentId { get; set; }
         public DateTime OrderDate { get; set; }
     }
     public class Contact
@@ -70,7 +82,7 @@ namespace Mumbaidabba.Models
 
     }
 
-    public class dabbawala
+    public class Dabbawala
     {
         public int dabbawalaId { get; set; }
         public string IdProof { get; set; }
@@ -83,6 +95,16 @@ namespace Mumbaidabba.Models
         public string dabbawalaDesc { get; set; }
     }
 
-
+    public class DabbaContext : DbContext
+    {
+        public DabbaContext(DbContextOptions<DabbaContext> options) : base(options) { }
+        public DbSet<DabbaCategory> dabbaCategory { get; set; }
+        public DbSet<User> user { get; set; }
+        public DbSet<Booking> booking { get; set; }
+        public DbSet<Carts> carts { get; set; }
+        public DbSet<Contact> contact { get; set; }
+        public DbSet<Dabbawala> dabbawala { get; set; }
+        
+    }
 }
  
