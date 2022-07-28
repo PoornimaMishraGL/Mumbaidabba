@@ -106,5 +106,9 @@ namespace Mumbaidabba.Models
         public DbSet<Dabbawala> dabbawala { get; set; }
         
     }
+    public class sam
+    {
+        public int samId { get; set; }
+    }
 }
  
