@@ -28,6 +28,7 @@ namespace Mumbaidabba.Models
     public class Carts
     {
         [Key]
+
         public int CartId { get; set; }
         [ForeignKey("dabbaCategory")]
         public int DbCtgId { get; set; }
