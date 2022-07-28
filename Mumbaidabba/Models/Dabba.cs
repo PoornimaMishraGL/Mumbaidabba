@@ -27,6 +27,7 @@ namespace Mumbaidabba.Models
     //}
     public class Carts
     {
+        [Key]
         public int CartId { get; set; }
         [ForeignKey("dabbaCategory")]
         public int DbCtgId { get; set; }
@@ -58,6 +59,7 @@ namespace Mumbaidabba.Models
     }
     public class Booking
     {
+        [Key]
         public int BookingDetailsId { get; set; }
         public string BookingNo { get; set; }
         [ForeignKey("dabbaCategory")]
@@ -72,6 +74,7 @@ namespace Mumbaidabba.Models
     }
     public class Contact
     {
+        [Key]
 
         public string Name { get; set; }
         public string Email { get; set; }
