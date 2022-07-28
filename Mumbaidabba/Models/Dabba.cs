@@ -45,14 +45,16 @@ namespace Mumbaidabba.Models
         public DateTime CreateDate { get; set; }
 
     }
-    public class Orders
+    public class Booking
     {
-        public int OrderDetailsId { get; set; }
-        public string OrderNo { get; set; }
+        public int BookingDetailsId { get; set; }
+        public string BookingNo { get; set; }
         [ForeignKey("DabbaCategory")]
         public int DbCtgId { get; set; }
+        public string DabbaCategoryName { get; set; }
         public int Quantity { get; set; }
         public int UserId { get; set; }
+        public string UserName { get; set; }
         public int PaymentId { get; set; }
         public DateTime OrderDate { get; set; }
     }
@@ -79,6 +81,7 @@ namespace Mumbaidabba.Models
         public string dabbawalaName { get; set; }
         public string location { get; set; }
         public string dabbawalaDesc { get; set; }
+
     }
 
     public class sam
