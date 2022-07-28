@@ -1,0 +1,38 @@
+﻿@model Mumbaidabba.Models.DabbaCategory
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DabbaCategory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DabbaCategoryName" class="control-label"></label>
+                <input asp-for="DabbaCategoryName" class="form-control" />
+                <span asp-validation-for="DabbaCategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DabbaCategoryDesc" class="control-label"></label>
+                <input asp-for="DabbaCategoryDesc" class="form-control" />
+                <span asp-validation-for="DabbaCategoryDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
