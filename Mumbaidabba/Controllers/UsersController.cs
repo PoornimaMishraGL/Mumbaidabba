@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mumbaidabba.Models;
 
-namespace Mumbaidabba.Views
+namespace Mumbaidabba.Controllers
 {
     public class UsersController : Controller
     {
