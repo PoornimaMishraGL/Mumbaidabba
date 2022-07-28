@@ -105,7 +105,5 @@ namespace Mumbaidabba.Models
         public DbSet<Contact> contact { get; set; }
         public DbSet<Dabbawala> dabbawala { get; set; }
     }
-    public class gl { }
-    //This is a commitment by Hemraj
 }
  
