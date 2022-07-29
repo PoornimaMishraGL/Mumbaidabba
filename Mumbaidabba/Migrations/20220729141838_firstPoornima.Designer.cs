@@ -12,8 +12,8 @@ using Mumbaidabba.Models;
 namespace Mumbaidabba.Migrations
 {
     [DbContext(typeof(DabbaContext))]
-    [Migration("20220728120547_sanchit1")]
-    partial class sanchit1
+    [Migration("20220729141838_firstPoornima")]
+    partial class firstPoornima
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
