@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using Mumbaidabba.Models;
 
 namespace Mumbaidabba.Controllers
 {
+   
     public class CartsController : Controller
     {
         private readonly DabbaContext _context;
@@ -44,7 +46,7 @@ namespace Mumbaidabba.Controllers
 
             return View(carts);
         }
-
+        [Authorize(Roles = "user")]
         // GET: Carts/Create
         public IActionResult Create()
         {
@@ -66,7 +68,7 @@ namespace Mumbaidabba.Controllers
                 return RedirectToAction(nameof(Index));
             
         }
-
+        [Authorize(Roles = "user")]
         // GET: Carts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -116,7 +118,7 @@ namespace Mumbaidabba.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "user")]
         // GET: Carts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

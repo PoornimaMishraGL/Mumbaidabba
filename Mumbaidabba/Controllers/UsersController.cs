@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,9 @@ using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Mumbaidabba.Controllers
 {
+   // [Authorize(Roles ="admin")]
+  // [Authorize(Roles = "user")]
+
     public class UsersController : Controller
     {
         private readonly DabbaContext _context;
@@ -49,6 +53,7 @@ namespace Mumbaidabba.Controllers
             return View(user);
         }
 
+        [Authorize(Roles = "user")]
         // GET: Users/Create
         public IActionResult Create()
         {
@@ -74,6 +79,7 @@ namespace Mumbaidabba.Controllers
             
         }
 
+        [Authorize(Roles = "user")]
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -126,7 +132,7 @@ namespace Mumbaidabba.Controllers
                 return RedirectToAction(nameof(Index));
            
         }
-
+        [Authorize(Roles = "user")]
         // GET: Users/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

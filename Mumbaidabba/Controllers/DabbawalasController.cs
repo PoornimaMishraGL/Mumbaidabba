@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Mumbaidabba.Controllers
 {
+
+
     public class DabbawalasController : Controller
     {
         private readonly DabbaContext _context;
@@ -22,13 +25,13 @@ namespace Mumbaidabba.Controllers
             _env = env;
 
         }
-        
+
         // GET: Dabbawalas
         public async Task<IActionResult> Index()
         {
-              return _context.dabbawala != null ? 
-                          View(await _context.dabbawala.ToListAsync()) :
-                          Problem("Entity set 'DabbaContext.dabbawala'  is null.");
+            return _context.dabbawala != null ?
+                        View(await _context.dabbawala.ToListAsync()) :
+                        Problem("Entity set 'DabbaContext.dabbawala'  is null.");
         }
 
         // GET: Dabbawalas/Details/5
@@ -49,11 +52,15 @@ namespace Mumbaidabba.Controllers
             return View(dabbawala);
         }
 
+        [Authorize(Roles ="dabbawala")]
+      //  [Authorize(Roles = "dabbawala")]
         // GET: Dabbawalas/Create
         public IActionResult Create()
         {
             return View();
         }
+
+
 
         // POST: Dabbawalas/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -74,7 +81,9 @@ namespace Mumbaidabba.Controllers
 
         }
 
+
         // GET: Dabbawalas/Edit/5
+       [Authorize(Roles = "dabbawala")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.dabbawala == null)
@@ -123,10 +132,10 @@ namespace Mumbaidabba.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            
-            
-        }
 
+
+        }
+        [Authorize(Roles = "dabbawala")]
         // GET: Dabbawalas/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
