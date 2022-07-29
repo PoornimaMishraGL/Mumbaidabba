@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mumbaidabba.Models;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Mumbaidabba.Controllers
 {
@@ -13,11 +14,15 @@ namespace Mumbaidabba.Controllers
     {
         private readonly DabbaContext _context;
 
-        public DabbawalasController(DabbaContext context)
+        public IHostingEnvironment _env;
+        public DabbawalasController(DabbaContext context, IHostingEnvironment env)
         {
-            _context = context;
-        }
 
+            _context = context;
+            _env = env;
+
+        }
+        
         // GET: Dabbawalas
         public async Task<IActionResult> Index()
         {
@@ -55,15 +60,18 @@ namespace Mumbaidabba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("dabbawalaId,IdProof,IdNumber,ImageUrl,dabbawalaName,location,dabbawalaDesc")] Dabbawala dabbawala)
+        public async Task<IActionResult> Create(Dabbawala dabbawala)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(dabbawala);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(dabbawala);
+
+            var nam = Path.Combine(_env.WebRootPath + "/Images", Path.GetFileName(dabbawala.IdImage.FileName));
+            dabbawala.IdImage.CopyTo(new FileStream(nam, FileMode.Create));
+            dabbawala.ImageUrl = "Images/" + dabbawala.IdImage.FileName;
+            _context.dabbawala.Add(dabbawala);
+            _context.Add(dabbawala);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+
         }
 
         // GET: Dabbawalas/Edit/5
@@ -87,17 +95,19 @@ namespace Mumbaidabba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("dabbawalaId,IdProof,IdNumber,ImageUrl,dabbawalaName,location,dabbawalaDesc")] Dabbawala dabbawala)
+        public async Task<IActionResult> Edit(int id,Dabbawala dabbawala)
         {
             if (id != dabbawala.dabbawalaId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            
                 try
                 {
+                    var nam = Path.Combine(_env.WebRootPath + "/Images", Path.GetFileName(dabbawala.IdImage.FileName));
+                    dabbawala.IdImage.CopyTo(new FileStream(nam, FileMode.Create));
+                    dabbawala.ImageUrl = "Images/" + dabbawala.IdImage.FileName;
                     _context.Update(dabbawala);
                     await _context.SaveChangesAsync();
                 }
@@ -113,8 +123,8 @@ namespace Mumbaidabba.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-            return View(dabbawala);
+            
+            
         }
 
         // GET: Dabbawalas/Delete/5

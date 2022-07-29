@@ -67,7 +67,8 @@
                 @Html.DisplayFor(modelItem => item.UserType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
+                <img src="~/@item.ImageUrl" width="150" />
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreateDate)

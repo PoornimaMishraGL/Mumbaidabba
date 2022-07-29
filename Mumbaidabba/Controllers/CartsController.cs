@@ -60,15 +60,11 @@ namespace Mumbaidabba.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CartId,DbCtgId,Quantity,usrid,Price,timeStamp")] Carts carts)
         {
-            if (ModelState.IsValid)
-            {
+            
                 _context.Add(carts);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["DbCtgId"] = new SelectList(_context.dabbaCategory, "DabbaCategoryId", "DabbaCategoryId", carts.DbCtgId);
-            ViewData["usrid"] = new SelectList(_context.user, "UserId", "UserId", carts.usrid);
-            return View(carts);
+            
         }
 
         // GET: Carts/Edit/5
@@ -101,29 +97,24 @@ namespace Mumbaidabba.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+
+            try
             {
-                try
-                {
-                    _context.Update(carts);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CartsExists(carts.CartId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                _context.Update(carts);
+                await _context.SaveChangesAsync();
             }
-            ViewData["DbCtgId"] = new SelectList(_context.dabbaCategory, "DabbaCategoryId", "DabbaCategoryId", carts.DbCtgId);
-            ViewData["usrid"] = new SelectList(_context.user, "UserId", "UserId", carts.usrid);
-            return View(carts);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CartsExists(carts.CartId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Carts/Delete/5

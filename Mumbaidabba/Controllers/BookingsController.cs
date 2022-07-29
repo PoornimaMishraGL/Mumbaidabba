@@ -58,14 +58,11 @@ namespace Mumbaidabba.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BookingDetailsId,BookingNo,DbCtgId,Quantity,usrid,OrderDate")] Booking booking)
         {
-            if (ModelState.IsValid)
-            {
+           
                 _context.Add(booking);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["DbCtgId"] = new SelectList(_context.dabbaCategory, "DabbaCategoryId", "DabbaCategoryId", booking.DbCtgId);
-            return View(booking);
+            
         }
 
         // GET: Bookings/Edit/5
@@ -97,8 +94,7 @@ namespace Mumbaidabba.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+           
                 try
                 {
                     _context.Update(booking);
@@ -116,9 +112,8 @@ namespace Mumbaidabba.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["DbCtgId"] = new SelectList(_context.dabbaCategory, "DabbaCategoryId", "DabbaCategoryId", booking.DbCtgId);
-            return View(booking);
+           
+            
         }
 
         // GET: Bookings/Delete/5

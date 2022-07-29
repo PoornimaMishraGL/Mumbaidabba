@@ -6,18 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mumbaidabba.Models;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+
 
 namespace Mumbaidabba.Controllers
 {
     public class UsersController : Controller
     {
         private readonly DabbaContext _context;
-
-        public UsersController(DabbaContext context)
+        public IHostingEnvironment _env;
+        public UsersController(DabbaContext context, IHostingEnvironment env)
         {
-            _context = context;
-        }
 
+            _context = context;
+            _env = env;
+
+        }
+        
         // GET: Users
         public async Task<IActionResult> Index()
         {
@@ -55,15 +60,18 @@ namespace Mumbaidabba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,UserName,Mobile,Email,Address,PostalCode,Password,UserType,ImageUrl,CreateDate")] User user)
+        public async Task<IActionResult> Create(User user)
         {
-            if (ModelState.IsValid)
-            {
+            
+                var nam = Path.Combine(_env.WebRootPath + "/Images", Path.GetFileName(user.UserImage.FileName));
+                user.UserImage.CopyTo(new FileStream(nam, FileMode.Create));
+                user.ImageUrl = "Images/" + user.UserImage.FileName;
+                _context.user.Add(user);
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(user);
+            
+            
         }
 
         // GET: Users/Edit/5
@@ -87,18 +95,21 @@ namespace Mumbaidabba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,Mobile,Email,Address,PostalCode,Password,UserType,ImageUrl,CreateDate")] User user)
+        public async Task<IActionResult> Edit(int id, User user)
         {
             if (id != user.UserId)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            
                 try
                 {
-                    _context.Update(user);
+                var nam = Path.Combine(_env.WebRootPath + "/Images", Path.GetFileName(user.UserImage.FileName));
+                user.UserImage.CopyTo(new FileStream(nam, FileMode.Create));
+                user.ImageUrl = "Images/" + user.UserImage.FileName;
+               
+                _context.Update(user);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -113,8 +124,7 @@ namespace Mumbaidabba.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
-            return View(user);
+           
         }
 
         // GET: Users/Delete/5
