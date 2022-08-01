@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Mumbaidabba.Migrations
+namespace Mumbaidabba.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class firstPoornima : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
