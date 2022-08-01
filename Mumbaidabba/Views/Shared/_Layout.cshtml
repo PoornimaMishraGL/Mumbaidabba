@@ -46,7 +46,7 @@
  
   <div class="hero_area">
     <div class="bg-box">
-      <img src="~/Images/bgimageblack.jpg" alt="">
+      <img src="~/Images/Dabbawala.jpg" alt="">
     </div>
 
 
@@ -55,7 +55,7 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-            <span>
+            <span style="color:black">
                Mumbai Dabbawala
             </span>
           </a>
@@ -64,26 +64,27 @@
             <span class=""> </span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  mx-auto ">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+            <ul class="navbar-nav  mx-auto " >
               <li class="nav-item active">
-                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" asp-controller="Home" asp-action="Index" style="color:black">Home <span class="sr-only" >(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" asp-controller="Home" asp-action="Index">About Us</a>
+                <a class="nav-link" asp-controller="Home" asp-action="Index" style="color:black">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" asp-controller="DabbaCategories" asp-action="Index">Dabba Category</a>
+                <a class="nav-link" asp-controller="DabbaCategories" asp-action="Index" style="color:black">Dabba Category</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" asp-controller="Contacts" asp-action="Index">Contact Us</a>
+                <a class="nav-link" asp-controller="Contacts" asp-action="Index" style="color:black">Contact Us</a>
               </li>
             </ul>
             <div class="user_option">
-              <a href="" class="user_link">
-                <i class="fa fa-user" aria-hidden="true"></i>
+              <a class="user_link" asp-controller="Users" asp-action="Index" style="color:black">
+                  
+                <i class="fa fa-user" aria-hidden="true"  ></i>
               </a>
-              <a class="cart_link" href="#">
+              <a class="cart_link" asp-controller="Carts" asp-action="Index" style="color:black">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
@@ -137,14 +138,8 @@
                   </g>
                 </svg>
               </a>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
+             <partial name="_LoginPartial" />
+              
             </div>
           </div>
         </nav>
@@ -154,9 +149,8 @@
 
 
 
+    <!--------------------------------------------------------- Slider section ----------------------------------------------------->
 
-
-     <!------------------------------------------------------ slider section ----------------------------------------------->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -169,7 +163,7 @@
                       Fast Food Restaurant
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                      Delicious everyday food using choicest raw materials, delivered to your doorstep. Home-style meals, prepared in state-of the art automated kitchen. The kitchen maintains the highest levels of hygiene and sanitization while handling food. Serving North-Indian, South-Indian and desi-Chinese cuisines, choose from Vegetarian and Non-Vegetarian meal options.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -187,10 +181,10 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      Daily Food Services
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                      Special package for offices. The menu does not feel repetitive anymore and you have a tasty well balanced affordable meal anywhere in Lucknow. We also provide tiffin control panel, for better management.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -208,10 +202,10 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      Help Us Kick
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                      Join our company to become tiffilo chefs. If there's some kind of magic in your hands. And a meal cooked by you always makes the person happy eating it. Would you like to be an tiffilo vendor partner.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -234,7 +228,7 @@
       </div>
 
     </section>
-    <!--------------------------------------------------------- end slider section ----------------------------------------------------->
+    <!---------------------------------------------------------- end Slider section ----------------------------->
   </div>
 
       <div class="container">
@@ -278,10 +272,12 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+             Mumbai Dabbawala
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+             Dabbawala helps you find and order food from wherever you are.
+how it works ? you type in an address, we tell you the restaurants that deliver to that local as well as showing you droves of pickup restaurants near you. want to be more specific ?
+search by cuisine, restaurant name or menu item. we'll filter your results accordingly.
             </p>
             <div class="footer_social">
               <a href="">
@@ -310,16 +306,14 @@
             Everyday
           </p>
           <p>
-            10.00 Am -10.00 Pm
+            07.00 Am -10.00 Pm
           </p>
         </div>
       </div>
-      <div class="footer-info">
+     <div class="footer-info">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Free Html Templates</a><br><br>
-          &copy; <span id="displayYear"></span> Distributed By
-          <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
+          <a href="https://html.design/">MumbaiDabbaWala</a>
         </p>
       </div>
     </div>
