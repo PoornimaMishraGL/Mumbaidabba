@@ -46,40 +46,50 @@
     <div class="bg-box">
       <img src="~/Images/Dabbawala.jpg" alt="">
     </div>
-     <!--------------------------------------------------------- header section start ------------------------------------------------>
+       <!----------------------------------------------- header section starts ------------------------------------->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-            <span style="color:black">
-               Mumbai Dabbawala
-            </span>
+               
+                <img src="~/Images/logo.png" width="35%" height="35%" >
+            
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class=""> </span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  mx-auto ">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+            <ul class="navbar-nav  mx-auto " >
               <li class="nav-item active">
-                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" asp-controller="Home" asp-action="Index" style="color:black">Home <span class="sr-only" >(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" asp-controller="Home" asp-action="Index">About Us</a>
+                <a class="nav-link" asp-controller="Bookings" asp-action="Index" style="color:black">Booking</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" asp-controller="DabbaCategories" asp-action="Index">Dabba Category</a>
+                <a class="nav-link" asp-controller="DabbaCategories" asp-action="Index" style="color:black">Dabba Category</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" asp-controller="Contacts" asp-action="Index">Contact Us</a>
+                <a class="nav-link" asp-controller="Contacts" asp-action="Index" style="color:black">Contact Us</a>
               </li>
             </ul>
+
             <div class="user_option">
-              <a href="" class="user_link">
-                <i class="fa fa-user" aria-hidden="true"></i>
+              <a class="user_link" style="color:black">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle:active" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:1px">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" asp-controller="Dabbawalas" asp-action="Index" >Dabbawalas</a></li>
+                            <li><a class="dropdown-item"  asp-controller="Users" asp-action="Index" >User</a></li> 
+                    </div>
+                </div>
               </a>
-              <a class="cart_link" href="#">
+
+              <a class="cart_link" asp-controller="Carts" asp-action="Index" style="color:black">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
@@ -133,14 +143,8 @@
                   </g>
                 </svg>
               </a>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-              <a href="" class="order_online">
-                Order Online
-              </a>
+             <partial name="_LoginPartial" />
+              
             </div>
           </div>
         </nav>
@@ -148,6 +152,8 @@
     </header>
     </div>
     <!------------------------------------------------- end header section ------------------------------------------------------------------>
+
+    
 
 
     

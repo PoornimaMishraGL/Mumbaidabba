@@ -55,9 +55,9 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-            <span style="color:black">
-               Mumbai Dabbawala
-            </span>
+               
+                <img src="~/Images/logo.png" width="35%" height="35%" >
+            
           </a>
 
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,11 +79,20 @@
                 <a class="nav-link" asp-controller="Contacts" asp-action="Index" style="color:black">Contact Us</a>
               </li>
             </ul>
+
             <div class="user_option">
-              <a class="user_link" asp-controller="Users" asp-action="Index" style="color:black">
-                  
-                <i class="fa fa-user" aria-hidden="true"  ></i>
+              <a class="user_link" style="color:black">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle:active" id="dropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:1px">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" asp-controller="Dabbawalas" asp-action="Index" >Dabbawalas</a></li>
+                            <li><a class="dropdown-item"  asp-controller="Users" asp-action="Index" >User</a></li> 
+                    </div>
+                </div>
               </a>
+
               <a class="cart_link" asp-controller="Carts" asp-action="Index" style="color:black">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
@@ -160,7 +169,7 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      Dabba wala 
                     </h1>
                     <p>
                       Delicious everyday food using choicest raw materials, delivered to your doorstep. Home-style meals, prepared in state-of the art automated kitchen. The kitchen maintains the highest levels of hygiene and sanitization while handling food. Serving North-Indian, South-Indian and desi-Chinese cuisines, choose from Vegetarian and Non-Vegetarian meal options.

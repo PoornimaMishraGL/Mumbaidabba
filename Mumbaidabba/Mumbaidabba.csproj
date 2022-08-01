@@ -17,14 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="template\.git\objects\info\" />
-    <Folder Include="template\.git\objects\pack\" />
-    <Folder Include="template\.git\refs\tags\" />
-    <Folder Include="template\css\" />
-    <Folder Include="template\js\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="template\.git\COMMIT_EDITMSG" />
     <None Include="template\.git\config" />
     <None Include="template\.git\description" />
@@ -109,6 +101,12 @@
     <None Include="wwwroot\js\bootstrap.js" />
     <None Include="wwwroot\js\custom.js" />
     <None Include="wwwroot\js\jquery-3.4.1.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="template\.git\objects\info\" />
+    <Folder Include="template\.git\objects\pack\" />
+    <Folder Include="template\.git\refs\tags\" />
   </ItemGroup>
 
 </Project>
