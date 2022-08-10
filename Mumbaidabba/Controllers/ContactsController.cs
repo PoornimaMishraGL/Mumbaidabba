@@ -24,9 +24,7 @@ namespace Mumbaidabba.Controllers
         // GET: Contacts
         public async Task<IActionResult> Index()
         {
-              return _context.contact != null ? 
-                          View(await _context.contact.ToListAsync()) :
-                          Problem("Entity set 'DabbaContext.contact'  is null.");
+            return View();
         }
 
         // GET: Contacts/Details/5

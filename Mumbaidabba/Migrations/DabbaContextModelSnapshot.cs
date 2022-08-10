@@ -87,8 +87,11 @@ namespace Mumbaidabba.Migrations
 
             modelBuilder.Entity("Mumbaidabba.Models.Contact", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -101,11 +104,15 @@ namespace Mumbaidabba.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Subject")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Name");
+                    b.HasKey("id");
 
                     b.ToTable("contact");
                 });

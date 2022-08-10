@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Mumbaidabba.Migrations
 {
-    public partial class firstPoornima : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,9 @@ namespace Mumbaidabba.Migrations
                 name: "contact",
                 columns: table => new
                 {
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -21,7 +23,7 @@ namespace Mumbaidabba.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_contact", x => x.Name);
+                    table.PrimaryKey("PK_contact", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
