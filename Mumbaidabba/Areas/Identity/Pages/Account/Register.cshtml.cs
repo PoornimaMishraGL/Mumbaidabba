@@ -83,12 +83,13 @@ namespace Mumbaidabba.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (ModelState.IsValid)
-            {
+            string fn = Request.Form["FirstName"];
+            string ln = Request.Form["LastName"];
+            
                 var user = new ApplicationUser
                 {
-                    FirstName = Input.FirstName,
-                    LastName = Input.LastName,
+                    FirstName = fn,
+                    LastName =  ln,
                     UserName = Input.Email,
                     Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -121,7 +122,7 @@ namespace Mumbaidabba.Areas.Identity.Pages.Account
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-            }
+            
 
             // If we got this far, something failed, redisplay form
             return Page();

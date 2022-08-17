@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Mumbaidabba.Migrations
+namespace Mumbaidabba.Migrations.Dabba
 {
-    public partial class initial : Migration
+    public partial class dcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
